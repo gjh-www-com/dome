@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .top {
+        width: 200px;
+        height: 200px;
+        position: relative;
+      }
+      .top img {
+        width: 100%;
+        height: 100%;
+      }
+      .small {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: red;
+        opacity: 0.3;
+        display: none;
+        cursor: move;
+      }
+      .button {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 200px;
+        top: 0;
+        overflow: hidden;
+        display: none;
+      }
+      .button img {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <div class="top">
+    <div class="small"></div>
+    <img src="../img/img.gif" alt="" />
+  </div>
+  <div class="button">
+    <img src="../img/img.gif" alt="" />
+  </div>
+  <body>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <script>
+      $(function () {
+        $(".top").hover(
+          function () {
+            $(".small").show();
+            $(".button").show();
+          },
+          function () {
+            $(".small").hide();
+            $(".button").hide();
+          }
+        );
+        $(".top").mousemove(function (e) {
+          var left = e.pageX - $(".small").width() / 2;
+          var top = e.pageY - $(".small").height() / 2;
+          if (left <= 0) {
+            left = 0;
+          }
+          if (left > $(".top").width() - $(".small").width()) {
+            left = $(".top").width() - $(".small").width();
+          }
+          if (top <= 0) {
+            top = 0;
+          }
+          if (top > $(".top").height() - $(".small").height()) {
+            top = $(".top").height() - $(".small").height();
+          }
+          $(".small").css({
+            left: left,
+            top: top,
+          });
+          left = (-left * $(".top").width()) / $(".small").width();
+          top = (-top * $(".top").height()) / $(".small").height();
+          $(".button img").css({
+            left: left,
+            top: top,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

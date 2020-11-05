@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .left {
+        width: 50px;
+        height: 315px;
+        position: fixed;
+        top: 100px;
+        left: 50px;
+        text-align: center;
+        line-height: 50px;
+      }
+      .left li {
+        width: 50px;
+        height: 50px;
+        border: solid 1px #7a7a7a;
+        cursor: pointer;
+      }
+      .left li:hover {
+        background: red;
+      }
+      .red {
+        background: red;
+      }
+      .left {
+        display: none;
+      }
+      .right {
+        width: 1000px;
+        position: absolute;
+        right: 100px;
+        border: solid #7a7a7a 1px;
+      }
+      .right li {
+        width: 1000px;
+        height: 500px;
+        border: solid 1px #7a7a7a;
+      }
+      .right li img {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="left">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>top</li>
+    </ul>
+    <ul class="right">
+      <li><img src="../img/熊.png" alt="" /></li>
+      <li><img src="../img/img.gif" alt="" /></li>
+      <li><img src="../img/flower.gif" alt="" /></li>
+      <li><img src="../img/flower.gif" alt="" /></li>
+      <li><img src="../img/flower.gif" alt="" /></li>
+    </ul>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <script>
+      $(function () {
+        var flag = true;
+        $(window).scroll(function () {
+          if (flag) {
+            var s = $(this).scrollTop();
+            if (s >= 250) {
+              $(".left").fadeIn();
+            } else {
+              $(".left").fadeOut();
+            }
+            $(".right li").each(function () {
+              if (s > $(this).offset().top - $(this).outerHeight() / 2) {
+                var index = $(this).index();
+                $(".left li")
+                  .eq(index)
+                  .addClass("red")
+                  .siblings()
+                  .removeClass("red");
+              }
+            });
+          }
+        });
+        $(".left li:not(:last)").click(function () {
+          flag = false;
+          var index = $(this).index();
+          $("html,body")
+            .stop()
+            .animate(
+              {
+                scrollTop: $(".right li").eq(index).offset().top,
+              },
+              function () {
+                flag = true;
+              }
+            );
+          $(this).addClass("red").siblings().removeClass("red");
+        });
+        $(".left li:last").click(function () {
+          $("html,body").stop().animate({
+            scrollTop: 0,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .box {
+        width: 400px;
+        height: 150px;
+        border: solid 1px #7a7a7a;
+        overflow: hidden;
+      }
+      .box li {
+        width: 50px;
+        height: 150px;
+        background: white;
+        position: relative;
+        float: left;
+      }
+      .box .oli {
+        width: 200px;
+      }
+      .active {
+        background-color: violet;
+        color: #333;
+      }
+      .box h3 {
+        width: 50px;
+        height: 150px;
+
+        text-align: center;
+        line-height: 50px;
+        border: solid 1px #7a7a7a;
+      }
+      .box ul li div {
+        position: absolute;
+        left: 50px;
+        top: 0;
+      }
+      .box img {
+        width: 150px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <ul>
+        <li class="oli">
+          <h3>手　风　琴　</h3>
+          <div><img src="../img/视频.png" alt="" /></div>
+        </li>
+        <li>
+          <h3>手　风　琴　</h3>
+          <div><img src="../img/视频.png" alt="" /></div>
+        </li>
+        <li>
+          <h3>手　风　琴　</h3>
+          <div><img src="../img/视频.png" alt="" /></div>
+        </li>
+        <li>
+          <h3>手　风　琴　</h3>
+          <div><img src="../img/视频.png" alt="" /></div>
+        </li>
+        <li>
+          <h3>手　风　琴　</h3>
+          <div><img src="../img/视频.png" alt="" /></div>
+        </li>
+      </ul>
+    </div>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <script>
+      $(function () {
+        $(".box")
+          .find("li")
+          .mouseover(function () {
+            $(this)
+              .stop()
+              .animate({
+                width: 200,
+              })
+              .find("h3")
+              .addClass("active")
+              .end()
+              .siblings()
+              .stop()
+              .animate({
+                width: 50,
+              })
+              .find("h3")
+              .removeClass("active");
+          });
+      });
+    </script>
+  </body>
+</html>

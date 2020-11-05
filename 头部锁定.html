@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 10000px;
+      }
+      .top {
+        width: 1000px;
+        height: 50px;
+        position: absolute;
+        left: 150px;
+      }
+      .top input {
+        width: 800px;
+        height: 50px;
+        border: none;
+        border: solid 1px red;
+        float: left;
+      }
+      .top button {
+        width: 194px;
+        height: 54px;
+        background: red;
+        border: none;
+        float: right;
+      }
+    </style>
+  </head>
+  <div class="top">
+    <input type="text" placeholder="袜子//鞋子" /><button>搜索</button>
+  </div>
+  <body>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <script>
+      $(function () {
+        $(window).scroll(function () {
+          var s = $(window).scrollTop();
+          if (s >= 1000) {
+            $(".top").css({
+              position: "fixed",
+            });
+          } else {
+            $(".top").css({
+              position: "absolute",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

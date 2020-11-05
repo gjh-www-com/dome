@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul li {
+        width: 100px;
+      }
+      .red {
+        background: red;
+      }
+    </style>
+  </head>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <button class="true">more</button>
+  <button class="stop">stop</button>
+  <button class="liji">finsh</button>
+  <body>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <script>
+      $(function () {
+        $("ul").on("click", "li", function () {
+          //事件源锁定
+          $(this)
+            .stop()
+            .animate(
+              {
+                width: "500px",
+              },
+              5000
+            )
+            .addClass("red")
+            .siblings()
+            .removeClass("red");
+          console.log("ok");
+        });
+        $(".true").click(function () {
+          $("li").stop(true);
+        });
+        $(".stop").click(function () {
+          $("li").stop();
+        });
+        $(".liji").click(function () {
+          $("li").stop(true, true);
+        });
+      });
+    </script>
+  </body>
+</html>

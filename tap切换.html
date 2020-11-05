@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul,
+      li {
+        list-style: none;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 500px;
+        height: 300px;
+        margin: 50px auto;
+        border: solid 1px #7a7a7a;
+      }
+      .nav {
+        width: 500px;
+        height: 50px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .nav li {
+        width: 50px;
+        height: 50px;
+        font-size: 40px;
+        line-height: 50px;
+        text-align: center;
+      }
+      .red {
+        background: red;
+        color: white;
+      }
+      .list {
+        width: 500px;
+        height: 250px;
+        background: #f4f4f4;
+        position: relative;
+      }
+      .list li {
+        width: 500px;
+        height: 250px;
+        font-size: 25px;
+        text-align: center;
+        line-height: 250px;
+        display: none;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <ul class="nav">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+      <ul class="list">
+        <li style="display: block; background: crimson">
+          <h1>这是第一个tap页面</h1>
+        </li>
+        <li style="background: yellow"><h1>这是第二个tap页面</h1></li>
+        <li style="background: blue"><h1>这是第三个tap页面</h1></li>
+        <li style="background: green"><h1>这是第四个tap页面</h1></li>
+        <li style="background: violet "><h1>这是第五个tap页面</h1></li>
+      </ul>
+    </div>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <script>
+      $(function () {
+        // 1.点击任意的nav按钮，添加类名red,并删除class名，list页面根据指定的索引，出现不同的效果
+        $(".nav li").hover(function () {
+          $(this).addClass("red").siblings().removeClass("red");
+          var index = $(this).index();
+          console.log(index);
+          $(".list li").eq(index).fadeIn().siblings().fadeOut();
+        });
+        // 2.
+        // 3.
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  全选<input type="checkbox" id="call" /><br />
+  <div>
+    <input type="checkbox" id="eck" />
+    <input type="checkbox" id="eck" />
+    <input type="checkbox" id="eck" />
+    <input type="checkbox" id="eck" />
+    <input type="checkbox" id="eck" />
+  </div>
+  <body>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <script>
+      $(function () {
+        $("#call").change(function () {
+          // console.log($(this).prop("checked"));
+          $("div input").prop("checked", $(this).prop("checked"));
+        });
+        $("div input").click(function () {
+          if ($("div input").length == $("div input:checked").length) {
+            $("#call").prop("checked", true);
+          } else {
+            $("#call").prop("checked", false);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
